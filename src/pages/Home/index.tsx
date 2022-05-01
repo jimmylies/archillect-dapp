@@ -9,6 +9,10 @@ import {
 } from '@elrondnetwork/dapp-core';
 import sal from 'sal.js';
 
+import vid1 from '../../assets/videos/PappilonHdGold.mp4';
+import vid2 from '../../assets/videos/PLEINPIEDVITREGOLD.mp4';
+import vid3 from '../../assets/videos/ROMEPALAIS.mp4';
+
 import img1 from '../../assets/img/slider/1.png';
 import img2 from '../../assets/img/slider/2.png';
 import img3 from '../../assets/img/slider/3.png';
@@ -168,14 +172,14 @@ const Home = () => {
             <div className='item-date'>-</div>
             <span className='item-content'>
               <strong>
-                A 360 degree vision to contemplate all the details.
+                A 360 degree vision to contemplate all the details
               </strong>
             </span>
           </div>
           <div className='item-description'>
             <div className='item-date'>-</div>
             <span className='item-content'>
-              <strong>Virtual Reality Helmet</strong>
+              <strong>Virtual Reality Helmet</strong>.
             </span>
           </div>
           <div className='item-description'>
@@ -221,7 +225,7 @@ const Home = () => {
             <span className='item-content'>
               <strong>
                 Watch the presentation of the interior of your ArchiNFT, with
-                ever more impressive details It
+                ever more impressive details it
               </strong>
             </span>
           </div>
@@ -255,13 +259,13 @@ const Home = () => {
             <div className='item-date'>-</div>
             <span className='item-content'>
               The next roadmap will be released at the same time as the entry
-              into the Metaverse.
+              into the Metaverse
             </span>
           </div>
           <div className='item-description'>
             <div className='item-date'>-</div>
             <span className='item-content'>
-              It will be evolutive depending on partnership with all metaverse.
+              It will be evolutive depending on partnership with all metaverse
             </span>
           </div>
           <div className='item-description'>
@@ -274,7 +278,21 @@ const Home = () => {
         </div>
       </div>
 
-      <div className='part-videos'></div>
+      <div className='part-videos'>
+        <h1>ArchiNFTs Preview</h1>
+        <div className='container-videos'>
+          <video autoPlay loop muted>
+            <source src={vid1} type='video/mp4' />
+            <p></p>
+          </video>
+          <video autoPlay loop muted>
+            <source src={vid2} type='video/mp4' />
+          </video>
+          <video autoPlay loop muted>
+            <source src={vid3} type='video/mp4' />
+          </video>
+        </div>
+      </div>
 
       <div className='part-faq'>
         <h1 data-sal='slide-up' data-sal-duration='800'>

@@ -669,18 +669,6 @@ Override Bootstrap variables only above.
 //   }
 // }
 
-// @media screen and (max-width: 450px) {
-//   .dapp-core-ui-component {
-//     .btn.btn-primary.px-sm-4.m-1.mx-sm-3 {
-//       span {
-//         font-size: 0.85rem !important;
-//         font-weight: 500 !important;
-//         padding: 0 !important;
-//       }
-//     }
-//   }
-// }
-
 *,
 *::before,
 *::after {
@@ -752,7 +740,7 @@ header {
   color: #c0a055;
 
   img {
-    width: 10rem;
+    width: 9.5rem;
   }
 }
 
@@ -766,6 +754,7 @@ a:hover {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  margin-right: 1rem;
 
   .activePage {
     background-color: #c0a055;
@@ -1060,6 +1049,31 @@ nav a {
   margin-left: 1rem;
 }
 
+/* Videos */
+
+.part-videos {
+  font-weight: 300;
+  font-size: 1.3rem;
+  border-bottom: 1px solid #c0a055;
+  padding: 1.5rem 0;
+
+  .container-videos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    video {
+      width: 41%;
+      margin: 2rem;
+      border: 3px solid #c0a055;
+      border-radius: 15px;
+    }
+  }
+}
+
+/* FAQ */
+
 .part-faq {
   font-weight: 300;
   font-size: 1.3rem;
@@ -1132,4 +1146,46 @@ footer {
   align-items: center;
   width: 100%;
   height: 50vh;
+}
+
+@media screen and (max-width: 1300px) {
+  .logo-header {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 930px) {
+  #root {
+    width: 80vw;
+  }
+
+  header {
+    flex-direction: column;
+
+    .siteDapp {
+      margin: 0 0 1rem 0;
+    }
+    .social {
+      display: none;
+    }
+  }
+
+
+  video {
+    width: 65% !important;
+    margin: 1rem !important;
+  }
+  
+}
+
+@media screen and (max-width: 450px) {
+  .dapp-core-ui-component {
+    .btn.btn-primary.px-sm-4.m-1.mx-sm-3 {
+      span {
+        font-size: 0.85rem !important;
+        font-weight: 500 !important;
+        padding: 0 !important;
+      }
+    }
+  }
 }
