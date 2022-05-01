@@ -49,11 +49,11 @@ const Actions = () => {
     <>
       {isLoggedIn ? (
         <div className='container-mint'>
-          <div className='bnt-mint'>Mint available soon</div>
+          <div className='bnt-mint'>Mint available soon.</div>
         </div>
       ) : (
         <div className='container-mint'>
-          <div>You need to be log in</div>
+          <div>You need to be logged in.</div>
         </div>
       )}
     </>

@@ -30,14 +30,12 @@ const Home = () => {
       if (answer != undefined) {
         answer.classList.toggle('activeFaq');
       }
-      console.log('ok');
     });
   });
 
   const showAnswer = (event: any) => {
     const answer = event.currentTarget.lastElementChild;
     answer?.classList.toggle('activeFaq');
-    console.log(event);
   };
 
   document.addEventListener('scroll', () => {
