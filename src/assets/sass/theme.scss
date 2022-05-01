@@ -835,6 +835,10 @@ nav a {
     color: #c0a055 !important;
   }
 
+  &:hover span {
+    color: #2b2b2b !important;
+  }
+
   &:hover .extension-login_wrapper.btn.btn-primary.px-sm-4.m-1.mx-sm-3,
   &:hover .web-wallet-login_wrapper.btn.btn-primary.px-sm-4.m-1.mx-sm-3,
   &:hover .test-class_name_wrapper.btn.btn-primary.px-sm-4.m-1.mx-sm-3,
@@ -1167,10 +1171,9 @@ nav a {
       border-radius: 15px;
       background-color: #252525;
 
-
       span {
         white-space: nowrap;
-        margin: .75rem 0;
+        margin: 0.75rem 0;
       }
 
       .pp {
