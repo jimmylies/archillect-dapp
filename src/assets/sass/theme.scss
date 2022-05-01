@@ -1142,6 +1142,54 @@ nav a {
   padding: 1.5rem 0;
 }
 
+/* Team */
+
+.part-team {
+  font-weight: 300;
+  font-size: 1.3rem;
+  border-bottom: 1px solid #c0a055;
+  padding: 1.5rem 0;
+
+  .container-profils {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .item-profil {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 41%;
+      margin: 2rem;
+      border: 3px solid #c0a055;
+      border-radius: 15px;
+      background-color: #252525;
+
+
+      span {
+        white-space: nowrap;
+        margin: .75rem 0;
+      }
+
+      .pp {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 15vw;
+        height: 15vw;
+        border-radius: 50%;
+        overflow: hidden;
+
+        img {
+          width: 180%;
+        }
+      }
+    }
+  }
+}
+
 /* Footer */
 
 footer {

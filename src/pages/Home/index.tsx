@@ -279,16 +279,36 @@ const Home = () => {
       </div>
 
       <div className='part-videos'>
-        <h1>ArchiNFTs Preview</h1>
+        <h1 data-sal='slide-up' data-sal-duration='800'>
+          ArchiNFTs Preview
+        </h1>
         <div className='container-videos'>
-          <video autoPlay loop muted>
+          <video
+            autoPlay
+            loop
+            muted
+            data-sal='slide-up'
+            data-sal-duration='800'
+          >
             <source src={vid1} type='video/mp4' />
             <p></p>
           </video>
-          <video autoPlay loop muted>
+          <video
+            autoPlay
+            loop
+            muted
+            data-sal='slide-up'
+            data-sal-duration='800'
+          >
             <source src={vid2} type='video/mp4' />
           </video>
-          <video autoPlay loop muted>
+          <video
+            autoPlay
+            loop
+            muted
+            data-sal='slide-up'
+            data-sal-duration='800'
+          >
             <source src={vid3} type='video/mp4' />
           </video>
         </div>
@@ -403,7 +423,58 @@ const Home = () => {
       </div>
 
       <div className='part-team'>
-        <h1>TEAM</h1>
+        <h1 data-sal='slide-up' data-sal-duration='800'>
+          TEAM
+        </h1>
+        <div className='container-profils'>
+          <div
+            className='item-profil'
+            data-sal='slide-up'
+            data-sal-duration='800'
+          >
+            <span className='name'>LazyArchi</span>
+            <div className='pp'>
+              <img src={img6} />
+            </div>
+            <span className='role'>Project Manager / Drafters</span>
+          </div>
+
+          <div
+            className='item-profil'
+            data-sal='slide-up'
+            data-sal-duration='800'
+          >
+            <span className='name'>AbilArchi</span>
+            <div className='pp'>
+              <img src={img5} />
+            </div>
+            <span className='role'>Community Manager</span>
+          </div>
+
+          <div
+            className='item-profil'
+            data-sal='slide-up'
+            data-sal-duration='800'
+          >
+            <span className='name'>Relin</span>
+            <div className='pp'>
+              <img src={img9} />
+            </div>
+            <span className='role'>Architec</span>
+          </div>
+
+          <div
+            className='item-profil'
+            data-sal='slide-up'
+            data-sal-duration='800'
+          >
+            <span className='name'>RestoneJack</span>
+            <div className='pp'>
+              <img src={img1} />
+            </div>
+            <span className='role'>Architec</span>
+          </div>
+        </div>
       </div>
     </div>
   );
