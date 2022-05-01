@@ -125,7 +125,7 @@ const Home = () => {
           </p>
           <div className='item-description'>
             <div className='item-date'>
-              <div>May 13</div>
+              <div>May 20</div>
               &ensp;-
             </div>
             <span className='item-content'>
@@ -134,20 +134,11 @@ const Home = () => {
           </div>
           <div className='item-description'>
             <div className='item-date'>
-              <div>May 27</div>
-              &ensp;-
-            </div>
-            <span className='item-content'>
-              <strong>First Public Sale</strong> | 400 ArchiNFT
-            </span>
-          </div>
-          <div className='item-description'>
-            <div className='item-date'>
               <div>June 17</div>
               &ensp;-
             </div>
             <span className='item-content'>
-              <strong>Second Public Sale</strong> | 500 ArchiNFT
+              <strong>Public Sale</strong> | 900 ArchiNFT
             </span>
           </div>
           <div className='item-description'>
@@ -368,8 +359,7 @@ const Home = () => {
             <span>
               Private sale: <em>May 20, 2022</em>
               <br />
-              Public sale: 1st wave on <em>May 27, 2022</em> & 2nd wave on{' '}
-              <em>June 17, 2022</em>
+              Public sale: <em>June 17, 2022</em>
             </span>
           </div>
         </div>
