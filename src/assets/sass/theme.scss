@@ -825,7 +825,14 @@ nav a {
   }
 
   span {
+    background-color: transparent;
+    border: none;
+    margin: 0 !important;
+    padding: 0 !important;
     white-space: nowrap !important;
+    box-shadow: none !important;
+    margin: 0 0.5rem !important;
+    color: #c0a055 !important;
   }
 
   &:hover .extension-login_wrapper.btn.btn-primary.px-sm-4.m-1.mx-sm-3,
