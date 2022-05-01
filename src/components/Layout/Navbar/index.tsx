@@ -2,6 +2,10 @@ import React from 'react';
 import { DappUI, logout, useGetAccountInfo } from '@elrondnetwork/dapp-core';
 import { routeNames } from 'routes';
 
+import logo from '../../../assets/img/logo.png';
+
+import sal from 'sal.js';
+
 const Navbar = () => {
   const { address } = useGetAccountInfo();
   const {
@@ -39,12 +43,20 @@ const Navbar = () => {
 
   isDapp();
 
+  document.addEventListener('scroll', () => {
+    sal();
+  });
+
+  React.useEffect(() => {
+    sal();
+  }, []);
+
   return (
     <>
-      <header>
+      <header data-sal='slide-up' data-sal-duration='800'>
         <div className='header-left'>
           <a href={routeNames.home} className='logo-header'>
-            <img src='https://archillect-nft.com/images/logo.png' alt='logo' />
+            <img src={logo} alt='logo' />
           </a>
           <div className='siteDapp'>
             <a href={routeNames.home} className='page activePage'>

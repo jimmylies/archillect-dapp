@@ -7,6 +7,17 @@ import {
   useGetLoginInfo,
   useGetAccountInfo
 } from '@elrondnetwork/dapp-core';
+import sal from 'sal.js';
+
+import img1 from '../../assets/img/slider/1.png';
+import img2 from '../../assets/img/slider/2.png';
+import img3 from '../../assets/img/slider/3.png';
+import img4 from '../../assets/img/slider/4.png';
+import img5 from '../../assets/img/slider/5.png';
+import img6 from '../../assets/img/slider/6.png';
+import img7 from '../../assets/img/slider/7.png';
+import img8 from '../../assets/img/slider/8.png';
+import img9 from '../../assets/img/slider/9.png';
 
 const Home = () => {
   document.querySelectorAll('.part-item-faq').forEach((e) => {
@@ -25,55 +36,41 @@ const Home = () => {
     console.log(event);
   };
 
+  document.addEventListener('scroll', () => {
+    sal();
+  });
+
+  React.useEffect(() => {
+    sal();
+  }, []);
+
   return (
     <div className='main-container'>
-      <div className='banner-section'>
+      <div
+        className='banner-section'
+        data-sal='slide-up'
+        data-sal-duration='800'
+      >
         <div className='slider'>
           <figure>
-            <img
-              src='https://archillect-nft.com/images/1.png'
-              alt='ArchillectNFT example'
-            />
-            <img
-              src='https://archillect-nft.com/images/2.png'
-              alt='ArchillectNFT example'
-            />
-            <img
-              src='https://archillect-nft.com/images/3.png'
-              alt='ArchillectNFT example'
-            />
-            <img
-              src='https://archillect-nft.com/images/4.png'
-              alt='ArchillectNFT example'
-            />
-            <img
-              src='https://archillect-nft.com/images/5.png'
-              alt='ArchillectNFT example'
-            />
-            <img
-              src='https://archillect-nft.com/images/6.png'
-              alt='ArchillectNFT example'
-            />
-            <img
-              src='https://archillect-nft.com/images/7.png'
-              alt='ArchillectNFT example'
-            />
-            <img
-              src='https://archillect-nft.com/images/8.png'
-              alt='ArchillectNFT example'
-            />
-            <img
-              src='https://archillect-nft.com/images/9.png'
-              alt='ArchillectNFT example'
-            />
-            <img
-              src='https://archillect-nft.com/images/1.png'
-              alt='ArchillectNFT example'
-            />
+            <img src={img1} alt='ArchillectNFT example' />
+            <img src={img2} alt='ArchillectNFT example' />
+            <img src={img3} alt='ArchillectNFT example' />
+            <img src={img4} alt='ArchillectNFT example' />
+            <img src={img5} alt='ArchillectNFT example' />
+            <img src={img6} alt='ArchillectNFT example' />
+            <img src={img7} alt='ArchillectNFT example' />
+            <img src={img8} alt='ArchillectNFT example' />
+            <img src={img9} alt='ArchillectNFT example' />
+            <img src={img1} alt='ArchillectNFT example' />
           </figure>
         </div>
 
-        <div className='presentation'>
+        <div
+          className='presentation'
+          data-sal='slide-up'
+          data-sal-duration='800'
+        >
           <p>
             Collection of{' '}
             <strong>
@@ -88,8 +85,10 @@ const Home = () => {
       </div>
 
       <div className='part-about'>
-        <h1>About Archillect NFT</h1>
-        <div className='part-item'>
+        <h1 data-sal='slide-up' data-sal-duration='800'>
+          About Archillect NFT
+        </h1>
+        <div className='part-item' data-sal='slide-up' data-sal-duration='800'>
           <p className='item-title'>Some context and definition</p>
           <div className='item-description'>
             <span className='item-content'>
@@ -104,7 +103,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className='part-item'>
+        <div className='part-item' data-sal='slide-up' data-sal-duration='800'>
           <p className='item-title'>Objective of the project</p>
           <div className='item-description'>
             <span className='item-content'>
@@ -117,8 +116,10 @@ const Home = () => {
       </div>
 
       <div className='part-roadmap'>
-        <h1>Roadmap</h1>
-        <div className='part-item'>
+        <h1 data-sal='slide-up' data-sal-duration='800' data-sal-delay='200'>
+          Roadmap
+        </h1>
+        <div className='part-item' data-sal='slide-up' data-sal-duration='800'>
           <p className='item-title'>
             <em>ARCHIMINT PHASE - Q2 2022</em>
           </p>
@@ -161,7 +162,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className='part-item'>
+        <div className='part-item' data-sal='slide-up' data-sal-duration='800'>
           <p className='item-title'>
             <em>VIRTUAL REALITY - Q3 & Q4 2022</em>
           </p>
@@ -195,7 +196,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className='part-item'>
+        <div className='part-item' data-sal='slide-up' data-sal-duration='800'>
           <p className='item-title'>
             <em>REWARDS - Q4 2022</em>
           </p>
@@ -210,7 +211,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className='part-item'>
+        <div className='part-item' data-sal='slide-up' data-sal-duration='800'>
           <p className='item-title'>
             <em>INTERIOR ArchiNFT - Q1 2023</em>
           </p>
@@ -235,7 +236,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className='part-item'>
+        <div className='part-item' data-sal='slide-up' data-sal-duration='800'>
           <p className='item-title'>
             <em>ENTER THE METAVERSE - Q2 & Q3 2023</em>
           </p>
@@ -255,7 +256,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className='part-item'>
+        <div className='part-item' data-sal='slide-up' data-sal-duration='800'>
           <p className='item-title'>
             <em>NEXT?</em>
           </p>
@@ -282,9 +283,18 @@ const Home = () => {
         </div>
       </div>
 
+      <div className='part-videos'></div>
+
       <div className='part-faq'>
-        <h1>FAQ</h1>
-        <div className='part-item-faq' onClick={showAnswer}>
+        <h1 data-sal='slide-up' data-sal-duration='800'>
+          FAQ
+        </h1>
+        <div
+          className='part-item-faq'
+          data-sal='slide-up'
+          data-sal-duration='800'
+          onClick={showAnswer}
+        >
           <div className='item-title-faq'>
             How many ArchiNFTs have we built?
           </div>
@@ -297,7 +307,12 @@ const Home = () => {
           </div>
         </div>
 
-        <div className='part-item-faq' onClick={showAnswer}>
+        <div
+          className='part-item-faq'
+          data-sal='slide-up'
+          data-sal-duration='800'
+          onClick={showAnswer}
+        >
           <p className='item-title-faq'>
             How much do I have to spend to become a homeowner?
           </p>
@@ -305,12 +320,17 @@ const Home = () => {
             <span>
               Price of Archillect-NFT Collection:
               <br /> Private sale: 1.45 $EGLD <br />
-              Public sale: 1.65 $EGLD
+              Public sale: 1.75 $EGLD
             </span>
           </div>
         </div>
 
-        <div className='part-item-faq' onClick={showAnswer}>
+        <div
+          className='part-item-faq'
+          data-sal='slide-up'
+          data-sal-duration='800'
+          onClick={showAnswer}
+        >
           <p className='item-title-faq'>How many ArchiNFTs will be minted?</p>
           <div className='item-description-faq'>
             <span>
@@ -321,7 +341,12 @@ const Home = () => {
           </div>
         </div>
 
-        <div className='part-item-faq' onClick={showAnswer}>
+        <div
+          className='part-item-faq'
+          data-sal='slide-up'
+          data-sal-duration='800'
+          onClick={showAnswer}
+        >
           <p className='item-title-faq'>How many can I buy?</p>
           <div className='item-description-faq'>
             <span>
@@ -332,7 +357,12 @@ const Home = () => {
           </div>
         </div>
 
-        <div className='part-item-faq' onClick={showAnswer}>
+        <div
+          className='part-item-faq'
+          data-sal='slide-up'
+          data-sal-duration='800'
+          onClick={showAnswer}
+        >
           <p className='item-title-faq'>When can I buy ArchiNFTs?</p>
           <div className='item-description-faq'>
             <span>
@@ -344,7 +374,12 @@ const Home = () => {
           </div>
         </div>
 
-        <div className='part-item-faq' onClick={showAnswer}>
+        <div
+          className='part-item-faq'
+          data-sal='slide-up'
+          data-sal-duration='800'
+          onClick={showAnswer}
+        >
           <p className='item-title-faq'>
             How & when could I reveal my ArchiNFTs?
           </p>
