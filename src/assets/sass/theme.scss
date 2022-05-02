@@ -864,12 +864,31 @@ nav a {
 }
 
 .slider {
-  width: 70%;
-  max-width: 700px;
+  position: relative;
+  width: 100%;
+
   overflow: hidden;
   box-shadow: 5px 5px 25px 0px rgba(46, 61, 73, 0.2);
   border: 3px solid #ebc775;
   border-radius: 20px;
+
+  .presentation {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    height: 100%;
+    background-color: #252525c0;
+  }
+
+  .presentation p {
+    text-align: center;
+    font-size: 1.8vw;
+    font-weight: 500;
+    line-height: 130%;
+    margin: 1.5rem;
+  }
 }
 
 .slider figure {
@@ -949,18 +968,6 @@ nav a {
   100% {
     left: -900%;
   }
-}
-
-.presentation {
-  padding: 5rem 0;
-  border-bottom: 1px solid #c0a055;
-}
-
-.presentation p {
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 300;
-  line-height: 120%;
 }
 
 /* About */
@@ -1220,6 +1227,10 @@ footer {
     .discord {
       margin: 1rem 0 !important;
     }
+  }
+
+  .presentation p {
+    font-size: 2.6vw !important;
   }
 
   video {

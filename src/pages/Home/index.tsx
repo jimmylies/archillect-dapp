@@ -54,6 +54,19 @@ const Home = () => {
         data-sal-duration='800'
       >
         <div className='slider'>
+          <div className='presentation'>
+            <p>
+              Collection of{' '}
+              <strong>
+                <em>999</em>
+              </strong>{' '}
+              unique 3D Houses, created one by one. <br />A club around the
+              wonderful world of architecture on Elrond. <br />
+              <br />
+              This collection aims to enter several Metaverses, and become the
+              reference in terms of architecture in the Metaverse.
+            </p>
+          </div>
           <figure>
             <img src={img1} alt='ArchillectNFT example' />
             <img src={img2} alt='ArchillectNFT example' />
@@ -66,23 +79,6 @@ const Home = () => {
             <img src={img9} alt='ArchillectNFT example' />
             <img src={img1} alt='ArchillectNFT example' />
           </figure>
-        </div>
-
-        <div
-          className='presentation'
-          data-sal='slide-up'
-          data-sal-duration='800'
-        >
-          <p>
-            Collection of{' '}
-            <strong>
-              <em>999</em>
-            </strong>{' '}
-            unique 3D Houses, created one by one. <br />
-            A club around the wonderful world of architecture on Elrond. <br />
-            This collection aims to enter several Metaverses, and become the
-            reference in terms of architecture in the Metaverse.
-          </p>
         </div>
       </div>
 
