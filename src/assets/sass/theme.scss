@@ -884,10 +884,11 @@ nav a {
 
   .presentation p {
     text-align: center;
-    font-size: 1.8vw;
-    font-weight: 500;
+    font-size: 1.9vw;
+    font-weight: 600;
     line-height: 130%;
     margin: 1.5rem;
+    color: aliceblue;
   }
 }
 
@@ -1231,6 +1232,7 @@ footer {
 
   .presentation p {
     font-size: 2.6vw !important;
+    margin: .1rem !important;
   }
 
   video {
