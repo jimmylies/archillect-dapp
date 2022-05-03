@@ -324,7 +324,7 @@ const Home = () => {
           <div className='item-title-faq'>
             How many ArchiNFTs have we built?
           </div>
-          <div className='item-description-faq'>
+          <div className='item-description-faq activeFaq'>
             <span>
               We built a total of 999 ArchiNFT HD creating each one at a time.
               <br />
@@ -342,7 +342,7 @@ const Home = () => {
           <p className='item-title-faq'>
             How much do I have to spend to become a homeowner?
           </p>
-          <div className='item-description-faq'>
+          <div className='item-description-faq activeFaq'>
             <span>
               Price of Archillect-NFT Collection:
               <br /> Private sale: 1.45 $EGLD <br />
@@ -358,7 +358,7 @@ const Home = () => {
           onClick={showAnswer}
         >
           <p className='item-title-faq'>How many ArchiNFTs will be minted?</p>
-          <div className='item-description-faq'>
+          <div className='item-description-faq activeFaq'>
             <span>
               Private Sale: 99 ArchiNFT
               <br />
@@ -374,7 +374,7 @@ const Home = () => {
           onClick={showAnswer}
         >
           <p className='item-title-faq'>How many can I buy?</p>
-          <div className='item-description-faq'>
+          <div className='item-description-faq activeFaq'>
             <span>
               Where will people sleep if you have all the houses? <br />
               Let’s create a large community of holders. <br />
@@ -390,7 +390,7 @@ const Home = () => {
           onClick={showAnswer}
         >
           <p className='item-title-faq'>When can I buy ArchiNFTs?</p>
-          <div className='item-description-faq'>
+          <div className='item-description-faq activeFaq'>
             <span>
               Private sale: <em>May 20, 2022</em>
               <br />
@@ -408,7 +408,7 @@ const Home = () => {
           <p className='item-title-faq'>
             How & when could I reveal my ArchiNFTs?
           </p>
-          <div className='item-description-faq'>
+          <div className='item-description-faq activeFaq'>
             <span>
               Reveal of the collection: <em>June 25, 2022</em>
               <br />
