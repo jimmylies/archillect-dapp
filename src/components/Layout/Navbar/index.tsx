@@ -58,7 +58,7 @@ const Navbar = () => {
 
   return (
     <>
-      <header data-sal='slide-up' data-sal-duration='800'>
+      <header data-sal='slide-up' data-sal-duration='800' id='home'>
         <div className='header-left'>
           <a href={routeNames.home} className='logo-header'>
             <img src={logo} alt='logo' />
@@ -133,11 +133,14 @@ const Navbar = () => {
         <div className='container-arrow' onClick={displayMenu}>
           <div className='not'>.</div>
           <div className='not'>.</div>
+          <div className='not'>.</div>
           <div className='arrow'></div>
+          <div className='not'>.</div>
           <div className='not'>.</div>
           <div className='not'>.</div>
         </div>
         <div className='menu'>
+          <a href='http://archillect-nft.com/#home'>HOME</a>
           <a href='https://archillect-nft.com/#about'>ABOUT</a>
           <a href='https://archillect-nft.com/#roadmap'>ROADMAP</a>
           <a href='https://archillect-nft.com/#preview'>PREVIEW</a>

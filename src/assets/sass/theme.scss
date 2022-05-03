@@ -920,6 +920,11 @@ nav a {
       transform: rotate(135deg);
       transition: transform 0.3s ease-out;
       opacity: 1;
+
+    }
+    &:hover .arrow{
+      border-right: 2px solid #e7d19e;
+      border-bottom: 2px solid #e7d19e;
     }
   }
 
