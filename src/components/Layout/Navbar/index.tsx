@@ -15,6 +15,7 @@ const Navbar = () => {
     WalletConnectLoginButton
   } = DappUI;
   const [isMethod, setIsMethod] = React.useState(false);
+  const [isOpened, setIsOpened] = React.useState(false);
 
   const isLoggedIn = Boolean(address);
 
@@ -50,6 +51,10 @@ const Navbar = () => {
   React.useEffect(() => {
     sal();
   }, []);
+
+  const displayMenu = () => {
+    document.querySelector('.container-menu')?.classList.toggle('activeMenu');
+  };
 
   return (
     <>
@@ -118,12 +123,28 @@ const Navbar = () => {
           <a
             href='https://twitter.com/ArchillectNFT/'
             target='_blanck'
-            className='social'
+            className='social twitter'
           >
             Twitter
           </a>
         </nav>
       </header>
+      <div className='container-menu'>
+        <div className='container-arrow' onClick={displayMenu}>
+          <div className='not'>.</div>
+          <div className='not'>.</div>
+          <div className='arrow'></div>
+          <div className='not'>.</div>
+          <div className='not'>.</div>
+        </div>
+        <div className='menu'>
+          <a href='https://archillect-nft.com/#about'>ABOUT</a>
+          <a href='https://archillect-nft.com/#roadmap'>ROADMAP</a>
+          <a href='https://archillect-nft.com/#preview'>PREVIEW</a>
+          <a href='https://archillect-nft.com/#faq'>FAQ</a>
+          <a href='https://archillect-nft.com/#team'>TEAM</a>
+        </div>
+      </div>
     </>
   );
 };

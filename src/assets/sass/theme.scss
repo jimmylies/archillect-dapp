@@ -723,8 +723,8 @@ header {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0px;
   width: 100%;
+  padding: 20px 0;
   border-bottom: 1px solid #c0a055;
 }
 
@@ -848,7 +848,104 @@ nav a {
 
 .social {
   &:hover {
-    color: #3f95e0;
+    color: #e7d19e;
+  }
+}
+
+.twitter {
+  margin: 0 1rem 0 0 !important;
+}
+
+.container-anchor {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0;
+  overflow: hidden;
+  margin-top: 1rem;
+
+  .anchor {
+    a {
+      margin: 0.75rem 1.5rem;
+      text-decoration: none;
+      color: #c0a055;
+
+      &:hover {
+        color: #e7d19e;
+      }
+    }
+  }
+}
+
+/* Menu anchor */
+.container-menu {
+  position: fixed;
+  top: 8rem;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  background-color: #252525;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  transform: translateX(85%);
+  transition: transform 0.3s ease-out;
+  z-index: 99;
+
+  .container-arrow {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 0 0.5rem;
+    cursor: pointer;
+
+    div {
+      margin: 0.5rem 0;
+      opacity: 0;
+    }
+
+    .arrow {
+      border-right: 2px solid #c0a055;
+      border-bottom: 2px solid #c0a055;
+      border-radius: 2px;
+      width: 1rem;
+      height: 1rem;
+      transform: rotate(135deg);
+      transition: transform 0.3s ease-out;
+      opacity: 1;
+    }
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+
+    a {
+      color: #c0a055;
+      text-decoration: none;
+      margin: 0.5rem 1.5rem;
+
+      &:hover {
+        text-decoration: none;
+        color: #e7d19e;
+      }
+    }
+  }
+}
+
+.activeMenu {
+  transform: translateX(0);
+
+  .arrow {
+    transform: rotate(-45deg) !important;
   }
 }
 
@@ -1185,16 +1282,6 @@ footer {
   margin: 0.3rem 0;
 }
 
-/* Dashboard */
-
-.container-mint {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 50vh;
-}
-
 @media screen and (max-width: 1300px) {
   .logo-header {
     display: none;
@@ -1256,4 +1343,14 @@ footer {
   .dapp-core-ui-component .dapp-core-ui-component {
     display: flex;
   }
+}
+
+/* Dashboard */
+
+.container-mint {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50vh;
 }

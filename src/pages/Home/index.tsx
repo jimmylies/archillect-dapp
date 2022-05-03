@@ -1,13 +1,12 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
-import { dAppName } from 'config';
 import { routeNames } from 'routes';
+import sal from 'sal.js';
 import {
   DappUI,
   useGetLoginInfo,
   useGetAccountInfo
 } from '@elrondnetwork/dapp-core';
-import sal from 'sal.js';
+import { Link } from 'react-router-dom';
 
 import img1 from '../../assets/img/slider/1.png';
 import img2 from '../../assets/img/slider/2.png';
@@ -86,7 +85,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className='part-about'>
+      <div className='part-about' id='about'>
         <h1 data-sal='slide-up' data-sal-duration='800'>
           About Archillect NFT
         </h1>
@@ -117,7 +116,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className='part-roadmap'>
+      <div className='part-roadmap' id='roadmap'>
         <h1 data-sal='slide-up' data-sal-duration='800' data-sal-delay='200'>
           Roadmap
         </h1>
@@ -276,7 +275,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className='part-videos'>
+      <div className='part-videos' id='preview'>
         <h1 data-sal='slide-up' data-sal-duration='800'>
           ArchiNFTs Preview
         </h1>
@@ -312,7 +311,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className='part-faq'>
+      <div className='part-faq' id='faq'>
         <h1 data-sal='slide-up' data-sal-duration='800'>
           FAQ
         </h1>
@@ -420,7 +419,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className='part-team'>
+      <div className='part-team' id='team'>
         <h1 data-sal='slide-up' data-sal-duration='800'>
           TEAM
         </h1>
@@ -456,9 +455,9 @@ const Home = () => {
           >
             <span className='name'>Relin</span>
             <div className='pp'>
-              <img src={img9} />
+              <img src={img1} />
             </div>
-            <span className='role'>Architec</span>
+            <span className='role'>Architect</span>
           </div>
 
           <div
@@ -466,11 +465,11 @@ const Home = () => {
             data-sal='slide-up'
             data-sal-duration='800'
           >
-            <span className='name'>RestoneJack</span>
+            <span className='name'>LeBronJ</span>
             <div className='pp'>
-              <img src={img1} />
+              <img src={img9} />
             </div>
-            <span className='role'>Architec</span>
+            <span className='role'>Blockchain Advisor</span>
           </div>
         </div>
       </div>
