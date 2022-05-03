@@ -893,6 +893,8 @@ nav a {
   transform: translateX(85%);
   transition: transform 0.3s ease-out;
   z-index: 99;
+  border: 2px solid #c0a055;
+  border-right: none;
 
   .container-arrow {
     display: flex;
