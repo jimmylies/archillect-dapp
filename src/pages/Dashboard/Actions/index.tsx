@@ -49,11 +49,18 @@ const Actions = () => {
     <>
       {isLoggedIn ? (
         <div className='container-mint'>
-          <div className='bnt-mint'>Mint available soon.</div>
+          {address ===
+            'erd15em4430juw2eallylcjmqwxq8ewt3nq8e050v3ufanvqy0fge9rspzq84x' ||
+          address ===
+            'erd19wkhfgs2glf97chl926fvwzgaq9eeakz474tzak6d998yu7xxtzqd3tng3' ? (
+            <div className='bnt-mint'>Mint available now.</div>
+          ) : (
+            <div className='bnt-mint'>Mint available soon.</div>
+          )}
         </div>
       ) : (
         <div className='container-mint'>
-          <div>You need to be logged in.</div>
+          <span>You need to be logged in.</span>
         </div>
       )}
     </>

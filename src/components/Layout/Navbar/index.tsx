@@ -15,7 +15,7 @@ const Navbar = () => {
     WalletConnectLoginButton
   } = DappUI;
   const [isMethod, setIsMethod] = React.useState(false);
-  const [isOpened, setIsOpened] = React.useState(false);
+  const [isDashboard, setIsDashboard] = React.useState(true);
 
   const isLoggedIn = Boolean(address);
 
@@ -50,6 +50,9 @@ const Navbar = () => {
 
   React.useEffect(() => {
     sal();
+    if (window.location.pathname === routeNames.dashboard) {
+      setIsDashboard(false);
+    }
   }, []);
 
   const displayMenu = () => {
@@ -130,23 +133,27 @@ const Navbar = () => {
         </nav>
       </header>
       <div className='container-menu'>
-        <div className='container-arrow' onClick={displayMenu}>
-          <div className='not'>.</div>
-          <div className='not'>.</div>
-          <div className='not'>.</div>
-          <div className='arrow'></div>
-          <div className='not'>.</div>
-          <div className='not'>.</div>
-          <div className='not'>.</div>
-        </div>
-        <div className='menu'>
-          <a href='https://archillect-nft.com/#home'>HOME</a>
-          <a href='https://archillect-nft.com/#about'>ABOUT</a>
-          <a href='https://archillect-nft.com/#roadmap'>ROADMAP</a>
-          <a href='https://archillect-nft.com/#preview'>PREVIEW</a>
-          <a href='https://archillect-nft.com/#faq'>FAQ</a>
-          <a href='https://archillect-nft.com/#team'>TEAM</a>
-        </div>
+        {isDashboard && (
+          <>
+            <div className='container-arrow' onClick={displayMenu}>
+              <div className='not'>.</div>
+              <div className='not'>.</div>
+              <div className='not'>.</div>
+              <div className='arrow'></div>
+              <div className='not'>.</div>
+              <div className='not'>.</div>
+              <div className='not'>.</div>
+            </div>
+            <div className='menu'>
+              <a href='https://archillect-nft.com/#home'>HOME</a>
+              <a href='https://archillect-nft.com/#about'>ABOUT</a>
+              <a href='https://archillect-nft.com/#roadmap'>ROADMAP</a>
+              <a href='https://archillect-nft.com/#preview'>PREVIEW</a>
+              <a href='https://archillect-nft.com/#faq'>FAQ</a>
+              <a href='https://archillect-nft.com/#team'>TEAM</a>
+            </div>
+          </>
+        )}
       </div>
     </>
   );
