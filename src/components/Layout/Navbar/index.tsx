@@ -140,7 +140,7 @@ const Navbar = () => {
           <div className='not'>.</div>
         </div>
         <div className='menu'>
-          <a href='http://archillect-nft.com/#home'>HOME</a>
+          <a href='https://archillect-nft.com/#home'>HOME</a>
           <a href='https://archillect-nft.com/#about'>ABOUT</a>
           <a href='https://archillect-nft.com/#roadmap'>ROADMAP</a>
           <a href='https://archillect-nft.com/#preview'>PREVIEW</a>
