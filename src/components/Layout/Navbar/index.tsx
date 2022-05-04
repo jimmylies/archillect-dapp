@@ -24,7 +24,7 @@ const Navbar = () => {
   };
 
   const logOut = () => {
-    logout(`${window.location.origin}`);
+    logout(`${window.location.pathname}`);
   };
 
   const page = document.querySelectorAll('.page');

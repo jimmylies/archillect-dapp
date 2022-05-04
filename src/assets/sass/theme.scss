@@ -106,11 +106,6 @@ a:hover {
   justify-content: space-around;
   margin-right: 1rem;
 
-  .activePage {
-    background-color: #c0a055;
-    color: #2b2b2b;
-  }
-
   a {
     display: flex;
     justify-content: center;
@@ -141,6 +136,11 @@ a:hover {
     background-color: #c0a055;
     color: #2b2b2b;
   }
+}
+
+.activePage {
+  background-color: #c0a055 !important;
+  color: #2b2b2b !important;
 }
 
 nav {

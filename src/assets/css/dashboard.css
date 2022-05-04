@@ -7,3 +7,79 @@
   width: 100%;
   height: 50vh;
 }
+
+.dapp {
+  border: 1px solid #c0a055;
+}
+
+.dapp-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.dapp-page {
+  text-align: center;
+  width: 100%;
+  padding: 0.3rem 0;
+  color: #252525;
+  background-color: #c0a055;
+
+  cursor: pointer;
+}
+
+.activeDapp {
+  color: #c0a055 !important;
+  background-color: #2b2b2b !important;
+}
+
+.dapp-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 50vh;
+  font-size: 1.4rem;
+}
+
+/* mint select quantity */
+.select-quantity {
+  display: flex;
+  flex-direction: row;
+}
+
+.select-quantity div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #c0a055;
+  color: #252525;
+  border: none;
+  font-weight: 600;
+  border-radius: 5px;
+  padding-top: 0.05rem;
+  min-width: 70px;
+  margin: 0.5rem;
+  cursor: pointer;
+}
+
+.select-quantity div:hover {
+  background-color: #e7d19e;
+}
+
+.mint-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 150px;
+  margin-top: 3rem;
+  background-color: #c0a055;
+  color: #252525;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.mint-btn:hover {
+  background-color: #e7d19e;
+}

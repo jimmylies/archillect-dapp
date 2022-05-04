@@ -8,7 +8,7 @@ import {
 import {
   contractAddress,
   bech32contractAddress,
-  baseCollection,
+  collection,
   buildMethod
 } from 'config';
 import mergeImages from 'merge-images';
@@ -22,11 +22,16 @@ const Actions = () => {
   const { sendTransactions } = transactionServices;
   const isLoggedIn = Boolean(address);
 
+  const [whatPage, setWhatPage] = React.useState<string>('mint');
+  const [quantity, setQuantity] = React.useState(1);
+  const [nbOwned, setNbOwned] = React.useState(0);
+  const [numArchi, setNumArchi] = React.useState<Array<string>>([]);
+
   // Mint
   const mintNFT = async () => {
     const mint = {
-      value: '300000000000000000',
-      data: 'mint@03',
+      value: '200000000000000000',
+      data: 'mint@0' + quantity,
       receiver: contractAddress
     };
     await refreshAccount();
@@ -45,19 +50,118 @@ const Actions = () => {
     }
   };
 
+  // Data NFTs
+  const regexp = /([0-9]+)/;
+
+  const data = async () => {
+    const dataFetch = await fetch(
+      `https://devnet-api.elrond.com/accounts/${address}/nfts?size=50&collection=${collection}`
+    ).then((res) => res.json());
+    for (let i = 0; i < dataFetch.length; i++) {
+      const x = dataFetch[i]['name'];
+      const regexNum: RegExpMatchArray | null = x.match(regexp);
+      if (regexNum) {
+        setNbOwned(1);
+        setNumArchi((num) => [...num, regexNum[0]]);
+      }
+    }
+    console.log('numArchi', numArchi);
+  };
+
+  React.useEffect(() => {
+    data();
+  }, []);
+
   return (
     <>
       {isLoggedIn ? (
-        <div className='container-mint'>
+        <>
           {address ===
             'erd15em4430juw2eallylcjmqwxq8ewt3nq8e050v3ufanvqy0fge9rspzq84x' ||
           address ===
             'erd19wkhfgs2glf97chl926fvwzgaq9eeakz474tzak6d998yu7xxtzqd3tng3' ? (
-            <div className='bnt-mint'>Mint available now.</div>
+            <div className='dapp'>
+              {whatPage === 'mint' ? (
+                <>
+                  <div className='dapp-header'>
+                    <div className='dapp-page activeDapp'>MINT</div>
+                    <div
+                      className='dapp-page'
+                      onClick={() => {
+                        setWhatPage('nft');
+                      }}
+                    >
+                      MY NFTs
+                    </div>
+                  </div>
+                  <div className='dapp-content'>
+                    <span>Price: 0.1 $EGLD</span>
+                    <span>Select quantity of NFTs</span>
+                    <div className='select-quantity'>
+                      <div
+                        onClick={() => {
+                          setQuantity(1);
+                        }}
+                      >
+                        1
+                      </div>
+                      <div
+                        onClick={() => {
+                          setQuantity(2);
+                        }}
+                      >
+                        2
+                      </div>
+                    </div>
+                    <span>Final price: {quantity * 0.1} $EGLD</span>
+                    <div className='mint-btn' onClick={mintNFT}>
+                      MINT
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className='dapp-header'>
+                    <div
+                      className='dapp-page'
+                      onClick={() => {
+                        setWhatPage('mint');
+                      }}
+                    >
+                      MINT
+                    </div>
+                    <div className='dapp-page activeDapp'>MY NFTS</div>
+                  </div>
+                  <div className='dapp-content'>
+                    <div className='nft-list'>
+                      {nbOwned === 0 ? (
+                        <span>
+                          Go get an NFT, you doesn&apos;t have one yet
+                        </span>
+                      ) : (
+                        <>
+                          {numArchi.map((num) => (
+                            <div key={num}>
+                              <img
+                                key={num}
+                                src={`https://devnet-media.elrond.com/nfts/asset/QmYBP7KFRWYn8oiEMCoY4tN6LFjAmc9x88ozoSDDSuYEtW/${num}.png`}
+                              />
+                              <div className='nft-tag'>ArchiNFT #{num}</div>
+                            </div>
+                          ))}
+                        </>
+                      )}
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
           ) : (
-            <div className='bnt-mint'>Mint available soon.</div>
+            <div className='container-mint'>
+              <div className='bnt-mint'>Mint available soon.</div>
+            </div>
           )}
-        </div>
+        </>
       ) : (
         <div className='container-mint'>
           <span>You need to be logged in.</span>
