@@ -79,7 +79,9 @@ const Actions = () => {
           {address ===
             'erd15em4430juw2eallylcjmqwxq8ewt3nq8e050v3ufanvqy0fge9rspzq84x' ||
           address ===
-            'erd19wkhfgs2glf97chl926fvwzgaq9eeakz474tzak6d998yu7xxtzqd3tng3' ? (
+            'erd19wkhfgs2glf97chl926fvwzgaq9eeakz474tzak6d998yu7xxtzqd3tng3' ||
+          address ===
+            'erd1palqae85fyha2m00a04qst3w6q0acryq9f4dnuy3m0atk8lks49qhvrdzu' ? (
             <div className='dapp'>
               {whatPage === 'mint' ? (
                 <>
