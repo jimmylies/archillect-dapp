@@ -469,7 +469,7 @@ nav a {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60px;
+  max-width: 60px;
   font-weight: 600;
 }
 
@@ -702,14 +702,4 @@ footer {
   .dapp-core-ui-component .dapp-core-ui-component {
     display: flex;
   }
-}
-
-/* Dashboard */
-
-.container-mint {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 50vh;
 }

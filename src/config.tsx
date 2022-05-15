@@ -1,8 +1,9 @@
-export const collection = 'ARCHINFT-b0ba51';
+export const baseCollection = 'ARCHINFT-268e2e';
+export const revealedCollection = 'ARCHINFT-14109a';
 export const contractAddress =
-  'erd1qqqqqqqqqqqqqpgqd2yc78ljknsahgtwx4qsmwsf5rmfteezxtzq4h2r5k';
+  'erd1qqqqqqqqqqqqqpgqdzr9klxtm24ttyv7f6nyzrumwycjpz2kxtzqzr60jc';
 export const bech32contractAddress =
-  '000000000000000005006a898f1ff2b4e1dba16e35410dba09a0f695e72232c4';
-export const buildMethod = '6275696C64'; // build
+  '0000000000000000050068865b7ccbdaaab5919e4ea6410f9b713120895632c4';
+export const revealMethod = '72657665616c'; // reveal
 
 export const dAppName = 'Archillect NFT';

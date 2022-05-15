@@ -8,8 +8,9 @@ import {
 import {
   contractAddress,
   bech32contractAddress,
-  collection,
-  buildMethod
+  baseCollection,
+  revealedCollection,
+  revealMethod
 } from 'config';
 import mergeImages from 'merge-images';
 import ReactS3Client from 'react-aws-s3-typescript';
@@ -25,15 +26,22 @@ const Actions = () => {
   const [whatPage, setWhatPage] = React.useState<string>('mint');
   const [quantity, setQuantity] = React.useState(1);
   const [nbOwned, setNbOwned] = React.useState(0);
-  const [numArchi, setNumArchi] = React.useState<Array<string>>([]);
+  const [numBase, setNumBase] = React.useState<Array<string>>([]);
+  const [numRevealed, setNumRevealed] = React.useState<Array<string>>([]);
+  const [nonceArchi, setNonceArchi] = React.useState<Array<string>>([]);
 
   // Mint
   const mintNFT = async () => {
     const mint = {
-      value: '200000000000000000',
-      data: 'mint@0' + quantity,
+      value: (100000000000000000 * quantity).toFixed(0).toString(),
+      data: 'mint@',
       receiver: contractAddress
     };
+    const nb = quantity.toString(16);
+    if (nb.length % 2 !== 0) {
+      mint.data += '0';
+    }
+    mint.data += nb;
     await refreshAccount();
 
     const { sessionId /*, error*/ } = await sendTransactions({
@@ -46,7 +54,7 @@ const Actions = () => {
       redirectAfterSign: false
     });
     if (sessionId != null) {
-      console.log('none');
+      console.log('null');
     }
   };
 
@@ -55,17 +63,55 @@ const Actions = () => {
 
   const data = async () => {
     const dataFetch = await fetch(
-      `https://devnet-api.elrond.com/accounts/${address}/nfts?size=50&collection=${collection}`
+      `https://devnet-api.elrond.com/accounts/${address}/nfts?size=50&collection=${baseCollection}`
     ).then((res) => res.json());
     for (let i = 0; i < dataFetch.length; i++) {
       const x = dataFetch[i]['name'];
       const regexNum: RegExpMatchArray | null = x.match(regexp);
       if (regexNum) {
         setNbOwned(1);
-        setNumArchi((num) => [...num, regexNum[0]]);
+        setNumBase((num) => [...num, regexNum[0]]);
+        setNonceArchi((num) => [...num, dataFetch[i]['nonce']]);
       }
     }
-    console.log('numArchi', numArchi);
+
+    const dataFetchRevealed = await fetch(
+      `https://devnet-api.elrond.com/accounts/${address}/nfts?size=50&collection=${revealedCollection}`
+    ).then((res) => res.json());
+    for (let i = 0; i < dataFetchRevealed.length; i++) {
+      const y = dataFetchRevealed[i]['name'];
+      const regexNumR: RegExpMatchArray | null = y.match(regexp);
+      if (regexNumR) {
+        setNbOwned(1);
+        setNumRevealed((num) => [...num, regexNumR[0]]);
+      }
+    }
+  };
+
+  const sendRevealTx = async (nonce: string) => {
+    const revealTx = {
+      data: 'ESDTNFTTransfer',
+      gasLimit: 30000000,
+      receiver: address
+    };
+    await refreshAccount();
+
+    const co = Buffer.from(baseCollection).toString('hex');
+    revealTx.data += `@${co}@${nonce}@01@${bech32contractAddress}@${revealMethod}`;
+
+    // Execute transaction
+    const { sessionId, error } = await sendTransactions({
+      transactions: revealTx,
+      transactionsDisplayInfo: {
+        processingMessage: 'Processing transaction',
+        errorMessage: 'An error has occured',
+        successMessage: 'Transaction successful'
+      },
+      redirectAfterSign: false
+    });
+    if (sessionId != null) {
+      console.log('null');
+    }
   };
 
   React.useEffect(() => {
@@ -95,27 +141,42 @@ const Actions = () => {
                     >
                       MY NFTs
                     </div>
+                    <div
+                      className='dapp-page'
+                      onClick={() => {
+                        setWhatPage('reveal');
+                      }}
+                    >
+                      REVEAL
+                    </div>
                   </div>
                   <div className='dapp-content'>
                     <span>Price: 0.1 $EGLD</span>
                     <span>Select quantity of NFTs</span>
                     <div className='select-quantity'>
                       <div
+                        id='minus'
                         onClick={() => {
-                          setQuantity(1);
+                          if (quantity > 1) {
+                            setQuantity(quantity - 1);
+                          }
                         }}
                       >
-                        1
+                        -
                       </div>
+                      <div>{quantity}</div>
                       <div
+                        id='plus'
                         onClick={() => {
-                          setQuantity(2);
+                          setQuantity(quantity + 1);
                         }}
                       >
-                        2
+                        +
                       </div>
                     </div>
-                    <span>Final price: {quantity * 0.1} $EGLD</span>
+                    <span>
+                      Final price: {(quantity * 0.1).toFixed(2)} $EGLD
+                    </span>
                     <div className='mint-btn' onClick={mintNFT}>
                       MINT
                     </div>
@@ -123,38 +184,126 @@ const Actions = () => {
                 </>
               ) : (
                 <>
-                  <div className='dapp-header'>
-                    <div
-                      className='dapp-page'
-                      onClick={() => {
-                        setWhatPage('mint');
-                      }}
-                    >
-                      MINT
-                    </div>
-                    <div className='dapp-page activeDapp'>MY NFTS</div>
-                  </div>
-                  <div className='dapp-content'>
-                    <div className='nft-list'>
-                      {nbOwned === 0 ? (
-                        <span>
-                          Go get an NFT, you doesn&apos;t have one yet
-                        </span>
-                      ) : (
-                        <>
-                          {numArchi.map((num) => (
-                            <div key={num}>
-                              <img
-                                key={num}
-                                src={`https://devnet-media.elrond.com/nfts/asset/QmYBP7KFRWYn8oiEMCoY4tN6LFjAmc9x88ozoSDDSuYEtW/${num}.png`}
-                              />
-                              <div className='nft-tag'>ArchiNFT #{num}</div>
-                            </div>
-                          ))}
-                        </>
-                      )}
-                    </div>
-                  </div>
+                  {whatPage === 'nft' ? (
+                    <>
+                      <div className='dapp-header'>
+                        <div
+                          className='dapp-page'
+                          onClick={() => {
+                            setWhatPage('mint');
+                          }}
+                        >
+                          MINT
+                        </div>
+                        <div className='dapp-page activeDapp'>MY NFTS</div>
+                        <div
+                          className='dapp-page'
+                          onClick={() => {
+                            setWhatPage('reveal');
+                          }}
+                        >
+                          REVEAL
+                        </div>
+                      </div>
+                      <div className='dapp-content-nfts'>
+                        <div className='nft-list'>
+                          {nbOwned === 0 ? (
+                            <span>
+                              Go get an NFT, you doesn&apos;t have one yet
+                            </span>
+                          ) : (
+                            <>
+                              {numBase.map((num) => (
+                                <div key={num} className='container-nft'>
+                                  <img
+                                    src={`https://devnet-media.elrond.com/nfts/asset/QmYBP7KFRWYn8oiEMCoY4tN6LFjAmc9x88ozoSDDSuYEtW/${num}.png`}
+                                  />
+                                  <div className='nft-tag'>
+                                    ArchiNFT Ticket #{num}
+                                  </div>
+                                </div>
+                              ))}
+                              {numRevealed.map((num) => (
+                                <div key={num} className='container-nft'>
+                                  <img
+                                    src={`https://devnet-media.elrond.com/nfts/asset/QmYBP7KFRWYn8oiEMCoY4tN6LFjAmc9x88ozoSDDSuYEtW/${num}.png`}
+                                  />
+                                  <div className='nft-tag'>ArchiNFT #{num}</div>
+                                </div>
+                              ))}
+                            </>
+                          )}
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className='dapp-header'>
+                        <div
+                          className='dapp-page'
+                          onClick={() => {
+                            setWhatPage('mint');
+                          }}
+                        >
+                          MINT
+                        </div>
+                        <div
+                          className='dapp-page'
+                          onClick={() => {
+                            setWhatPage('nft');
+                          }}
+                        >
+                          MY NFTs
+                        </div>
+                        <div
+                          className='dapp-page activeDapp'
+                          onClick={() => {
+                            setWhatPage('reveal');
+                          }}
+                        >
+                          REVEAL
+                        </div>
+                      </div>
+                      <div className='dapp-content-nfts'>
+                        <div className='nft-list'>
+                          {nbOwned === 0 ? (
+                            <span>
+                              Go get an NFT, you doesn&apos;t have one yet
+                            </span>
+                          ) : (
+                            <>
+                              {numBase.map((num, index) => (
+                                <>
+                                  <div key={num} className='container-nft'>
+                                    <img
+                                      src={`https://devnet-media.elrond.com/nfts/asset/QmYBP7KFRWYn8oiEMCoY4tN6LFjAmc9x88ozoSDDSuYEtW/${num}.png`}
+                                    />
+                                    <div className='nft-tag'>
+                                      ArchiNFT Ticket #{num}
+                                    </div>
+                                    <div
+                                      className='reveal'
+                                      onClick={() => {
+                                        let nonce =
+                                          nonceArchi[index].toString();
+                                        if (nonce.length % 2 != 0) {
+                                          nonce = '0' + nonce;
+                                        }
+                                        sendRevealTx(nonce);
+                                        console.log('ok');
+                                      }}
+                                    >
+                                      REVEAL
+                                    </div>
+                                  </div>
+                                </>
+                              ))}
+                            </>
+                          )}
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </>
               )}
             </div>

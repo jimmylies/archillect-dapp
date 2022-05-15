@@ -376,9 +376,8 @@ const Home = () => {
           <p className='item-title-faq'>How many can I buy?</p>
           <div className='item-description-faq activeFaq'>
             <span>
-              Where will people sleep if you have all the houses? <br />
-              Let’s create a large community of holders. <br />
-              So you can mint <strong>2</strong> ArchiNFTs per wallet.
+              There is no limit per wallet, enjoy all the wonderful houses you
+              can get
             </span>
           </div>
         </div>
