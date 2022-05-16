@@ -68,7 +68,8 @@
   cursor: pointer;
 }
 
-#minus, #plus {
+#minus,
+#plus {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -83,7 +84,6 @@
   cursor: pointer;
   user-select: none;
 }
-
 
 .select-quantity div:hover {
   background-color: #e7d19e;
@@ -103,6 +103,34 @@
 
 .mint-btn:hover {
   background-color: #e7d19e;
+}
+
+.mint-btn-disable {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 150px;
+  margin-top: 3rem;
+  background-color: #c0a055;
+  color: #252525;
+  border-radius: 5px;
+  cursor: not-allowed;
+}
+
+.not-wl {
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+}
+
+.countdown {
+  margin-top: 0.3rem;
+  user-select: none;
+}
+
+
+.disable {
+  display: none;
 }
 
 /* .dapp-content-nfts {
@@ -139,13 +167,12 @@
   font-size: 1rem;
 }
 
-
 .reveal {
   text-align: center;
   cursor: pointer;
   border: 1px solid #c0a055;
   border-radius: 10px;
-  padding: .2rem .5rem;
+  padding: 0.2rem 0.5rem;
   transition: all 0.3s ease-out;
 }
 

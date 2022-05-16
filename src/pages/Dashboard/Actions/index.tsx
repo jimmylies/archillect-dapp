@@ -119,17 +119,16 @@ const Actions = () => {
 
   const [isWl, setIsWl] = React.useState<boolean>(false);
   const [isEnd, setIsEnd] = React.useState<boolean>(false);
-
-  const countdown = document.getElementsByClassName('countdown')[0];
+  const [chrono, setChrono] = React.useState('');
 
   const date = new Date(Date.UTC(2022, 4, 20, 17, 0, 0, 0)).getTime();
 
   const setWl = async () => {
     const dataWl = await fetch(
-      'https://raw.githubusercontent.com/jimmylies/archillect-dapp/master/whitelist.plain'
-    ).then((res) => res.json());
-    for (let i = 0; i < dataWl.length; i++) {
-      if (address === dataWl[i]) {
+      'https://raw.githubusercontent.com/jimmylies/archillect-dapp/master/src/assets/docs/whitelist.plain'
+    ).then((response) => response.text());
+    for (let i = 0; i < dataWl.length; i += 63) {
+      if (address === dataWl.substring(i, i + 62)) {
         setIsWl(true);
       }
     }
@@ -144,12 +143,10 @@ const Actions = () => {
       let minute: any = Math.floor((diff / 60) % 60);
       let second: any = Math.floor(diff % 60);
 
-      if (hour <= 0 && minute <= 0 && second <= 0) {
-        if (countdown != null) countdown.innerHTML = '';
+      if (date - nowdate < 0) {
+        setChrono('');
         setIsEnd(true);
-      }
-
-      if (isEnd === false) {
+      } else {
         if (day < 10) {
           day = '0' + day;
         }
@@ -158,16 +155,14 @@ const Actions = () => {
         }
         if (minute < 10) minute = '0' + minute;
         if (second < 10) second = '0' + second;
-        if (countdown != null) {
-          countdown.innerHTML =
-            day + 'd ' + hour + 'h ' + minute + 'm ' + second + 's';
-        }
+        setChrono(day + 'd ' + hour + 'h ' + minute + 'm ' + second + 's');
       }
     }, 1000);
   }
 
   React.useEffect(() => {
     data();
+    setWl();
   }, []);
 
   return (
@@ -179,7 +174,7 @@ const Actions = () => {
           address ===
             'erd19wkhfgs2glf97chl926fvwzgaq9eeakz474tzak6d998yu7xxtzqd3tng3' ||
           address ===
-            'erd1palqae85fyha2m00a04qst3w6q0acryq9f4dnuy3m0atk8lks49qhvrdzu' ? (
+            'erd1fh3qalvtxyefhlljzdaufemeetg2faunnqnpsnk8mhphlusprv7qs8hzmu' ? (
             <div className='dapp'>
               {whatPage === 'mint' ? (
                 <>
@@ -229,10 +224,39 @@ const Actions = () => {
                     <span>
                       Final price: {(quantity * 1.45).toFixed(2)} $EGLD
                     </span>
-                    <div className='mint-btn' onClick={mintNFT}>
-                      MINT
-                    </div>
-                    <div className='countdown'></div>
+                    {isWl ? (
+                      <>
+                        {isEnd ? (
+                          <div className='mint-btn' onClick={mintNFT}>
+                            MINT
+                          </div>
+                        ) : (
+                          <>
+                            {address ===
+                              'erd15em4430juw2eallylcjmqwxq8ewt3nq8e050v3ufanvqy0fge9rspzq84x' ||
+                            address ===
+                              'erd19wkhfgs2glf97chl926fvwzgaq9eeakz474tzak6d998yu7xxtzqd3tng3' ? (
+                              <div className='mint-btn' onClick={mintNFT}>
+                                MINT
+                              </div>
+                            ) : (
+                              <div className='mint-btn-disable'>MINT</div>
+                            )}
+                          </>
+                        )}
+                      </>
+                    ) : (
+                      <>
+                        <div className='mint-btn-disable'>MINT</div>
+                        <div className='not-wl'>
+                          You&apos;re not allowed to mint at this wave
+                          <br />
+                          You need to be whitelisted
+                        </div>
+                      </>
+                    )}
+
+                    <div className='countdown'>{chrono}</div>
                   </div>
                 </>
               ) : (
