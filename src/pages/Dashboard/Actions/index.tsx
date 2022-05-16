@@ -33,8 +33,9 @@ const Actions = () => {
   // Mint
   const mintNFT = async () => {
     const mint = {
-      value: (100000000000000000 * quantity).toFixed(0).toString(),
+      value: (1450000000000000000 * quantity).toFixed(0).toString(),
       data: 'mint@',
+      gasLimit: 100000000,
       receiver: contractAddress
     };
     const nb = quantity.toString(16);
@@ -114,6 +115,57 @@ const Actions = () => {
     }
   };
 
+  //countdown
+
+  const [isWl, setIsWl] = React.useState<boolean>(false);
+  const [isEnd, setIsEnd] = React.useState<boolean>(false);
+
+  const countdown = document.getElementsByClassName('countdown')[0];
+
+  const date = new Date(Date.UTC(2022, 4, 20, 17, 0, 0, 0)).getTime();
+
+  const setWl = async () => {
+    const dataWl = await fetch(
+      'https://raw.githubusercontent.com/jimmylies/archillect-dapp/master/whitelist.plain'
+    ).then((res) => res.json());
+    for (let i = 0; i < dataWl.length; i++) {
+      if (address === dataWl[i]) {
+        setIsWl(true);
+      }
+    }
+  };
+
+  if (isWl) {
+    setInterval(() => {
+      const nowdate = Date.now();
+      const diff = (date - nowdate) / 1000;
+      let day: any = Math.floor(diff / (60 * 60 * 24));
+      let hour: any = Math.floor((diff / 3600) % 24);
+      let minute: any = Math.floor((diff / 60) % 60);
+      let second: any = Math.floor(diff % 60);
+
+      if (hour <= 0 && minute <= 0 && second <= 0) {
+        if (countdown != null) countdown.innerHTML = '';
+        setIsEnd(true);
+      }
+
+      if (isEnd === false) {
+        if (day < 10) {
+          day = '0' + day;
+        }
+        if (hour < 10) {
+          hour = '0' + hour;
+        }
+        if (minute < 10) minute = '0' + minute;
+        if (second < 10) second = '0' + second;
+        if (countdown != null) {
+          countdown.innerHTML =
+            day + 'd ' + hour + 'h ' + minute + 'm ' + second + 's';
+        }
+      }
+    }, 1000);
+  }
+
   React.useEffect(() => {
     data();
   }, []);
@@ -151,7 +203,7 @@ const Actions = () => {
                     </div>
                   </div>
                   <div className='dapp-content'>
-                    <span>Price: 0.1 $EGLD</span>
+                    <span>Whitelist price: 1.45 $EGLD</span>
                     <span>Select quantity of NFTs</span>
                     <div className='select-quantity'>
                       <div
@@ -175,11 +227,12 @@ const Actions = () => {
                       </div>
                     </div>
                     <span>
-                      Final price: {(quantity * 0.1).toFixed(2)} $EGLD
+                      Final price: {(quantity * 1.45).toFixed(2)} $EGLD
                     </span>
                     <div className='mint-btn' onClick={mintNFT}>
                       MINT
                     </div>
+                    <div className='countdown'></div>
                   </div>
                 </>
               ) : (

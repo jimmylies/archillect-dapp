@@ -39,8 +39,12 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 50vh;
+  height: 60vh;
   font-size: 1.4rem;
+}
+
+.dapp-content-nfts {
+  height: 60vh;
 }
 
 /* mint select quantity */
@@ -106,30 +110,46 @@
 
 .nft-list {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 50vh;
+  height: 100%;
   font-size: 1.4rem;
   width: 100%;
+  overflow-y: scroll;
 }
 
 .nft-list .container-nft {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   margin: 1.5rem;
 }
 
 .nft-list .container-nft img {
-  width: 15vw;
+  width: 90%;
+  border-radius: 15px;
 }
 
 .nft-list .container-nft .nft-tag {
   text-align: center;
+  font-size: 1rem;
 }
 
 
 .reveal {
   text-align: center;
   cursor: pointer;
+  border: 1px solid #c0a055;
+  border-radius: 10px;
+  padding: .2rem .5rem;
+  transition: all 0.3s ease-out;
+}
+
+.reveal:hover {
+  color: #252525;
+  background-color: #c0a055;
 }
