@@ -1,4 +1,4 @@
-export const baseCollection = 'ARCHINFT-268e2e';
+export const baseCollection = 'ARCHINFT-bafce0';
 export const revealedCollection = 'ARCHINFT-14109a';
 export const contractAddress =
   'erd1qqqqqqqqqqqqqpgqjtg4wfwsd96mh3namlw30umlv5fs5ajee9rs00kqnh';

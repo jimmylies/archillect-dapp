@@ -157,8 +157,8 @@
   margin: 1.5rem;
 }
 
-.nft-list .container-nft img {
-  width: 90%;
+.nft-list .container-nft video {
+  width: 40%;
   border-radius: 15px;
 }
 

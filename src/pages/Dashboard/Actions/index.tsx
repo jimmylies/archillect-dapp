@@ -12,8 +12,6 @@ import {
   revealedCollection,
   revealMethod
 } from 'config';
-import mergeImages from 'merge-images';
-import ReactS3Client from 'react-aws-s3-typescript';
 
 const Actions = () => {
   const account = useGetAccountInfo();
@@ -64,7 +62,7 @@ const Actions = () => {
 
   const data = async () => {
     const dataFetch = await fetch(
-      `https://devnet-api.elrond.com/accounts/${address}/nfts?size=50&collection=${baseCollection}`
+      `https://api.elrond.com/accounts/${address}/nfts?size=50&collection=${baseCollection}`
     ).then((res) => res.json());
     for (let i = 0; i < dataFetch.length; i++) {
       const x = dataFetch[i]['name'];
@@ -77,7 +75,7 @@ const Actions = () => {
     }
 
     const dataFetchRevealed = await fetch(
-      `https://devnet-api.elrond.com/accounts/${address}/nfts?size=50&collection=${revealedCollection}`
+      `https://api.elrond.com/accounts/${address}/nfts?size=50&collection=${revealedCollection}`
     ).then((res) => res.json());
     for (let i = 0; i < dataFetchRevealed.length; i++) {
       const y = dataFetchRevealed[i]['name'];
@@ -168,152 +166,145 @@ const Actions = () => {
   return (
     <>
       {isLoggedIn ? (
-        <>
-          {address ===
-            'erd15em4430juw2eallylcjmqwxq8ewt3nq8e050v3ufanvqy0fge9rspzq84x' ||
-          address ===
-            'erd19wkhfgs2glf97chl926fvwzgaq9eeakz474tzak6d998yu7xxtzqd3tng3' ||
-          address ===
-            'erd1fh3qalvtxyefhlljzdaufemeetg2faunnqnpsnk8mhphlusprv7qs8hzmu' ? (
-            <div className='dapp'>
-              {whatPage === 'mint' ? (
-                <>
-                  <div className='dapp-header'>
-                    <div className='dapp-page activeDapp'>MINT</div>
-                    <div
-                      className='dapp-page'
-                      onClick={() => {
-                        setWhatPage('nft');
-                      }}
-                    >
-                      MY NFTs
-                    </div>
-                    <div
+        <div className='dapp'>
+          {whatPage === 'mint' ? (
+            <>
+              <div className='dapp-header'>
+                <div className='dapp-page activeDapp'>MINT</div>
+                <div
+                  className='dapp-page'
+                  onClick={() => {
+                    setWhatPage('nft');
+                  }}
+                >
+                  MY NFTs
+                </div>
+                {/* <div
                       className='dapp-page'
                       onClick={() => {
                         setWhatPage('reveal');
                       }}
                     >
                       REVEAL
-                    </div>
+                    </div> */}
+              </div>
+              <div className='dapp-content'>
+                <span>Whitelist price: 1.45 $EGLD</span>
+                <span>Select quantity of NFTs</span>
+                <div className='select-quantity'>
+                  <div
+                    id='minus'
+                    onClick={() => {
+                      if (quantity > 1) {
+                        setQuantity(quantity - 1);
+                      }
+                    }}
+                  >
+                    -
                   </div>
-                  <div className='dapp-content'>
-                    <span>Whitelist price: 1.45 $EGLD</span>
-                    <span>Select quantity of NFTs</span>
-                    <div className='select-quantity'>
-                      <div
-                        id='minus'
-                        onClick={() => {
-                          if (quantity > 1) {
-                            setQuantity(quantity - 1);
-                          }
-                        }}
-                      >
-                        -
+                  <div>{quantity}</div>
+                  <div
+                    id='plus'
+                    onClick={() => {
+                      setQuantity(quantity + 1);
+                    }}
+                  >
+                    +
+                  </div>
+                </div>
+                <span>Final price: {(quantity * 1.45).toFixed(2)} $EGLD</span>
+                {isWl ? (
+                  <>
+                    {isEnd ? (
+                      <div className='mint-btn' onClick={mintNFT}>
+                        MINT
                       </div>
-                      <div>{quantity}</div>
-                      <div
-                        id='plus'
-                        onClick={() => {
-                          setQuantity(quantity + 1);
-                        }}
-                      >
-                        +
-                      </div>
-                    </div>
-                    <span>
-                      Final price: {(quantity * 1.45).toFixed(2)} $EGLD
-                    </span>
-                    {isWl ? (
+                    ) : (
                       <>
-                        {isEnd ? (
+                        {address ===
+                          'erd15em4430juw2eallylcjmqwxq8ewt3nq8e050v3ufanvqy0fge9rspzq84x' ||
+                        address ===
+                          'erd19wkhfgs2glf97chl926fvwzgaq9eeakz474tzak6d998yu7xxtzqd3tng3' ? (
                           <div className='mint-btn' onClick={mintNFT}>
                             MINT
                           </div>
                         ) : (
-                          <>
-                            {address ===
-                              'erd15em4430juw2eallylcjmqwxq8ewt3nq8e050v3ufanvqy0fge9rspzq84x' ||
-                            address ===
-                              'erd19wkhfgs2glf97chl926fvwzgaq9eeakz474tzak6d998yu7xxtzqd3tng3' ? (
-                              <div className='mint-btn' onClick={mintNFT}>
-                                MINT
-                              </div>
-                            ) : (
-                              <div className='mint-btn-disable'>MINT</div>
-                            )}
-                          </>
+                          <div className='mint-btn-disable'>MINT</div>
                         )}
                       </>
+                    )}
+                  </>
+                ) : (
+                  <>
+                    <div className='mint-btn-disable'>MINT</div>
+                    <div className='not-wl'>
+                      You&apos;re not allowed to mint at this wave
+                      <br />
+                      You need to be whitelisted
+                    </div>
+                  </>
+                )}
+
+                <div className='countdown'>{chrono}</div>
+              </div>
+            </>
+          ) : (
+            <>
+              {/* {whatPage === 'nft' ? ( */}
+              <>
+                <div className='dapp-header'>
+                  <div
+                    className='dapp-page'
+                    onClick={() => {
+                      setWhatPage('mint');
+                    }}
+                  >
+                    MINT
+                  </div>
+                  <div className='dapp-page activeDapp'>MY NFTS</div>
+                  {/* <div
+                        className='dapp-page'
+                        onClick={() => {
+                          setWhatPage('reveal');
+                        }}
+                      >
+                        REVEAL
+                      </div> */}
+                </div>
+                <div className='dapp-content-nfts'>
+                  <div className='nft-list'>
+                    {nbOwned === 0 ? (
+                      <span>Go get an NFT, you doesn&apos;t have one yet</span>
                     ) : (
                       <>
-                        <div className='mint-btn-disable'>MINT</div>
-                        <div className='not-wl'>
-                          You&apos;re not allowed to mint at this wave
-                          <br />
-                          You need to be whitelisted
-                        </div>
+                        {numBase.map((num) => (
+                          <div key={num} className='container-nft'>
+                            <video autoPlay loop muted>
+                              <source
+                                src={`https://media.elrond.com/nfts/asset/Qma3mcwYRwDV83SoRpTrLpaVnULuhMSNBFq86BJHQtdyi5/${num}.mp4`}
+                              ></source>
+                            </video>
+                            <div className='nft-tag'>
+                              ArchiNFT Ticket #{num}
+                            </div>
+                          </div>
+                        ))}
+                        {numRevealed.map((num) => (
+                          <div key={num} className='container-nft'>
+                            <video autoPlay loop muted>
+                              <source
+                                src={`https://media.elrond.com/nfts/asset/Qma3mcwYRwDV83SoRpTrLpaVnULuhMSNBFq86BJHQtdyi5/${num}.mp4`}
+                              ></source>
+                            </video>
+                            <div className='nft-tag'>ArchiNFT #{num}</div>
+                          </div>
+                        ))}
                       </>
                     )}
-
-                    <div className='countdown'>{chrono}</div>
                   </div>
-                </>
-              ) : (
-                <>
-                  {whatPage === 'nft' ? (
-                    <>
-                      <div className='dapp-header'>
-                        <div
-                          className='dapp-page'
-                          onClick={() => {
-                            setWhatPage('mint');
-                          }}
-                        >
-                          MINT
-                        </div>
-                        <div className='dapp-page activeDapp'>MY NFTS</div>
-                        <div
-                          className='dapp-page'
-                          onClick={() => {
-                            setWhatPage('reveal');
-                          }}
-                        >
-                          REVEAL
-                        </div>
-                      </div>
-                      <div className='dapp-content-nfts'>
-                        <div className='nft-list'>
-                          {nbOwned === 0 ? (
-                            <span>
-                              Go get an NFT, you doesn&apos;t have one yet
-                            </span>
-                          ) : (
-                            <>
-                              {numBase.map((num) => (
-                                <div key={num} className='container-nft'>
-                                  <img
-                                    src={`https://devnet-media.elrond.com/nfts/asset/QmYBP7KFRWYn8oiEMCoY4tN6LFjAmc9x88ozoSDDSuYEtW/${num}.png`}
-                                  />
-                                  <div className='nft-tag'>
-                                    ArchiNFT Ticket #{num}
-                                  </div>
-                                </div>
-                              ))}
-                              {numRevealed.map((num) => (
-                                <div key={num} className='container-nft'>
-                                  <img
-                                    src={`https://devnet-media.elrond.com/nfts/asset/QmYBP7KFRWYn8oiEMCoY4tN6LFjAmc9x88ozoSDDSuYEtW/${num}.png`}
-                                  />
-                                  <div className='nft-tag'>ArchiNFT #{num}</div>
-                                </div>
-                              ))}
-                            </>
-                          )}
-                        </div>
-                      </div>
-                    </>
-                  ) : (
+                </div>
+              </>
+              {/* ) : (
                     <>
                       <div className='dapp-header'>
                         <div
@@ -353,7 +344,7 @@ const Actions = () => {
                                 <>
                                   <div key={num} className='container-nft'>
                                     <img
-                                      src={`https://devnet-media.elrond.com/nfts/asset/QmYBP7KFRWYn8oiEMCoY4tN6LFjAmc9x88ozoSDDSuYEtW/${num}.png`}
+                                      src={`https://media.elrond.com/nfts/asset/QmYBP7KFRWYn8oiEMCoY4tN6LFjAmc9x88ozoSDDSuYEtW/${num}.png`}
                                     />
                                     <div className='nft-tag'>
                                       ArchiNFT Ticket #{num}
@@ -380,16 +371,10 @@ const Actions = () => {
                         </div>
                       </div>
                     </>
-                  )}
-                </>
-              )}
-            </div>
-          ) : (
-            <div className='container-mint'>
-              <div className='bnt-mint'>Mint available soon.</div>
-            </div>
+                  )} */}
+            </>
           )}
-        </>
+        </div>
       ) : (
         <div className='container-mint'>
           <span>You need to be logged in.</span>
