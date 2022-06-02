@@ -31,7 +31,7 @@ const Actions = () => {
   // Mint
   const mintNFT = async () => {
     const mint = {
-      value: (1450000000000000000 * quantity).toFixed(0).toString(),
+      value: (600000000000000000 * quantity).toFixed(0).toString(),
       data: 'mint@',
       gasLimit: 100000000,
       receiver: contractAddress
@@ -115,22 +115,11 @@ const Actions = () => {
 
   //countdown
 
-  const [isWl, setIsWl] = React.useState<boolean>(false);
-  const [isEnd, setIsEnd] = React.useState<boolean>(false);
+  const [isWl, setIsWl] = React.useState<boolean>(true);
+  const [isEnd, setIsEnd] = React.useState<boolean>(true);
   const [chrono, setChrono] = React.useState('');
 
   const date = new Date(Date.UTC(2022, 4, 20, 17, 0, 0, 0)).getTime();
-
-  const setWl = async () => {
-    const dataWl = await fetch(
-      'https://raw.githubusercontent.com/jimmylies/archillect-dapp/master/src/assets/docs/whitelist.plain'
-    ).then((response) => response.text());
-    for (let i = 0; i < dataWl.length; i += 63) {
-      if (address === dataWl.substring(i, i + 62)) {
-        setIsWl(true);
-      }
-    }
-  };
 
   if (isWl) {
     setInterval(() => {
@@ -160,7 +149,6 @@ const Actions = () => {
 
   React.useEffect(() => {
     data();
-    setWl();
   }, []);
 
   return (
@@ -189,7 +177,7 @@ const Actions = () => {
                     </div> */}
               </div>
               <div className='dapp-content'>
-                <span>Whitelist price: 1.45 $EGLD</span>
+                <span>NFT price: 0.6 $EGLD</span>
                 <span>Select quantity of NFTs</span>
                 <div className='select-quantity'>
                   <div
@@ -212,7 +200,7 @@ const Actions = () => {
                     +
                   </div>
                 </div>
-                <span>Final price: {(quantity * 1.45).toFixed(2)} $EGLD</span>
+                <span>Final price: {(quantity * 0.6).toFixed(2)} $EGLD</span>
                 {isWl ? (
                   <>
                     {isEnd ? (

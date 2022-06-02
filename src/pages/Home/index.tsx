@@ -345,8 +345,7 @@ const Home = () => {
           <div className='item-description-faq activeFaq'>
             <span>
               Price of Archillect-NFT Collection:
-              <br /> Private sale: 1.45 $EGLD <br />
-              Public sale: 1.75 $EGLD
+              <br /> NFT price: 0.6 $EGLD
             </span>
           </div>
         </div>
@@ -393,7 +392,7 @@ const Home = () => {
             <span>
               Private sale: <em>May 20, 2022</em>
               <br />
-              Public sale: <em>June 17, 2022</em>
+              Public sale: <em>June 2, 2022</em>
             </span>
           </div>
         </div>
