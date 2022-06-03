@@ -280,34 +280,9 @@ const Home = () => {
           ArchiNFTs Preview
         </h1>
         <div className='container-videos'>
-          <video
-            autoPlay
-            loop
-            muted
-            data-sal='slide-up'
-            data-sal-duration='800'
-          >
-            <source src={vid1} type='video/mp4' />
-            <p></p>
-          </video>
-          <video
-            autoPlay
-            loop
-            muted
-            data-sal='slide-up'
-            data-sal-duration='800'
-          >
-            <source src={vid2} type='video/mp4' />
-          </video>
-          <video
-            autoPlay
-            loop
-            muted
-            data-sal='slide-up'
-            data-sal-duration='800'
-          >
-            <source src={vid3} type='video/mp4' />
-          </video>
+          <img src={img4} alt='ArchillectNFT example' />
+          <img src={img5} alt='ArchillectNFT example' />
+          <img src={img6} alt='ArchillectNFT example' />
         </div>
       </div>
 
@@ -392,7 +367,7 @@ const Home = () => {
             <span>
               Private sale: <em>May 20, 2022</em>
               <br />
-              Public sale: <em>June 2, 2022</em>
+              Public sale: <em>June 17, 2022</em>
             </span>
           </div>
         </div>
@@ -427,7 +402,7 @@ const Home = () => {
             data-sal='slide-up'
             data-sal-duration='800'
           >
-            <span className='name'>LazyArchi</span>
+            <span className='name'>Abdel Aimo (LazyArchi)</span>
             <div className='pp'>
               <img src={img6} />
             </div>
@@ -439,7 +414,7 @@ const Home = () => {
             data-sal='slide-up'
             data-sal-duration='800'
           >
-            <span className='name'>AbilArchi</span>
+            <span className='name'>Nicolas Durenne (AbilArchi)</span>
             <div className='pp'>
               <img src={img5} />
             </div>
@@ -451,7 +426,7 @@ const Home = () => {
             data-sal='slide-up'
             data-sal-duration='800'
           >
-            <span className='name'>Relin</span>
+            <span className='name'>(Relin)</span>
             <div className='pp'>
               <img src={img1} />
             </div>
@@ -463,7 +438,7 @@ const Home = () => {
             data-sal='slide-up'
             data-sal-duration='800'
           >
-            <span className='name'>LeBronJ</span>
+            <span className='name'>(LeBronJ)</span>
             <div className='pp'>
               <img src={img9} />
             </div>
