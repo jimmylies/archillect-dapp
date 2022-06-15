@@ -18,10 +18,6 @@ import img7 from '../../assets/img/slider/7.png';
 import img8 from '../../assets/img/slider/8.png';
 import img9 from '../../assets/img/slider/9.png';
 
-import vid1 from '../../assets/videos/PappilonHdGold.mp4';
-import vid2 from '../../assets/videos/PLEINPIEDVITREGOLD.mp4';
-import vid3 from '../../assets/videos/ROMEPALAIS.mp4';
-
 const Home = () => {
   document.querySelectorAll('.part-item-faq').forEach((e) => {
     e.addEventListener('click', () => {
@@ -135,7 +131,7 @@ const Home = () => {
           </div>
           <div className='item-description'>
             <div className='item-date'>
-              <div>June 17</div>
+              <div>Jun 20</div>
               &ensp;-
             </div>
             <span className='item-content'>
@@ -144,7 +140,7 @@ const Home = () => {
           </div>
           <div className='item-description'>
             <div className='item-date'>
-              <div>June 25</div>
+              <div>Aug 06</div>
               &ensp;-
             </div>
             <span className='item-content'>
@@ -367,7 +363,7 @@ const Home = () => {
             <span>
               Private sale: <em>May 20, 2022</em>
               <br />
-              Public sale: <em>June 17, 2022</em>
+              Public sale: <em>June 20, 2022</em>
             </span>
           </div>
         </div>
@@ -383,7 +379,7 @@ const Home = () => {
           </p>
           <div className='item-description-faq activeFaq'>
             <span>
-              Reveal of the collection: <em>June 25, 2022</em>
+              Reveal of the collection: <em>August 06, 2022</em>
               <br />
               You will be able to reveal your ArchiNFTs by exchanging minted
               NFTs for revealed ArchiNFTs from the date of revelation.

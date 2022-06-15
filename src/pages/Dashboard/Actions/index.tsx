@@ -116,36 +116,34 @@ const Actions = () => {
   //countdown
 
   const [isWl, setIsWl] = React.useState<boolean>(true);
-  const [isEnd, setIsEnd] = React.useState<boolean>(true);
+  const [isEnd, setIsEnd] = React.useState<boolean>(false);
   const [chrono, setChrono] = React.useState('');
 
-  const date = new Date(Date.UTC(2022, 4, 20, 17, 0, 0, 0)).getTime();
+  const date = new Date(Date.UTC(2022, 5, 20, 15, 0, 0, 0)).getTime();
 
-  if (isWl) {
-    setInterval(() => {
-      const nowdate = Date.now();
-      const diff = (date - nowdate) / 1000;
-      let day: any = Math.floor(diff / (60 * 60 * 24));
-      let hour: any = Math.floor((diff / 3600) % 24);
-      let minute: any = Math.floor((diff / 60) % 60);
-      let second: any = Math.floor(diff % 60);
+  setInterval(() => {
+    const nowdate = Date.now();
+    const diff = (date - nowdate) / 1000;
+    let day: any = Math.floor(diff / (60 * 60 * 24));
+    let hour: any = Math.floor((diff / 3600) % 24);
+    let minute: any = Math.floor((diff / 60) % 60);
+    let second: any = Math.floor(diff % 60);
 
-      if (date - nowdate < 0) {
-        setChrono('');
-        setIsEnd(true);
-      } else {
-        if (day < 10) {
-          day = '0' + day;
-        }
-        if (hour < 10) {
-          hour = '0' + hour;
-        }
-        if (minute < 10) minute = '0' + minute;
-        if (second < 10) second = '0' + second;
-        setChrono(day + 'd ' + hour + 'h ' + minute + 'm ' + second + 's');
+    if (date - nowdate < 0) {
+      setChrono('');
+      setIsEnd(true);
+    } else {
+      if (day < 10) {
+        day = '0' + day;
       }
-    }, 1000);
-  }
+      if (hour < 10) {
+        hour = '0' + hour;
+      }
+      if (minute < 10) minute = '0' + minute;
+      if (second < 10) second = '0' + second;
+      setChrono(day + 'd ' + hour + 'h ' + minute + 'm ' + second + 's');
+    }
+  }, 1000);
 
   React.useEffect(() => {
     data();
