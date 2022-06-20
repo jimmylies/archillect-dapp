@@ -119,7 +119,7 @@ const Actions = () => {
   const [isEnd, setIsEnd] = React.useState<boolean>(false);
   const [chrono, setChrono] = React.useState('');
 
-  const date = new Date(Date.UTC(2022, 5, 20, 15, 0, 0, 0)).getTime();
+  const date = new Date(Date.UTC(2022, 5, 20, 17, 0, 0, 0)).getTime();
 
   setInterval(() => {
     const nowdate = Date.now();
