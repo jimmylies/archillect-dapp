@@ -140,7 +140,7 @@ const Home = () => {
           </div>
           <div className='item-description'>
             <div className='item-date'>
-              <div>Aug 06</div>
+              <div>July 25</div>
               &ensp;-
             </div>
             <span className='item-content'>
@@ -379,7 +379,7 @@ const Home = () => {
           </p>
           <div className='item-description-faq activeFaq'>
             <span>
-              Reveal of the collection: <em>August 06, 2022</em>
+              Reveal of the collection: <em>July 25, 2022</em>
               <br />
               You will be able to reveal your ArchiNFTs by exchanging minted
               NFTs for revealed ArchiNFTs from the date of revelation.
