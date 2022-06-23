@@ -131,7 +131,7 @@ const Actions = () => {
 
     if (date - nowdate < 0) {
       setChrono('');
-      setIsEnd(true);
+      //setIsEnd(true);
     } else {
       if (day < 10) {
         day = '0' + day;
