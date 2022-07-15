@@ -135,12 +135,21 @@ const Home = () => {
               &ensp;-
             </div>
             <span className='item-content'>
-              <strong>Public Sale</strong> | 900 ArchiNFT
+              <strong>First Public Sale</strong>
             </span>
           </div>
           <div className='item-description'>
             <div className='item-date'>
-              <div>July 25</div>
+              <div>July 22</div>
+              &ensp;-
+            </div>
+            <span className='item-content'>
+              <strong>Second Public Sale</strong>
+            </span>
+          </div>
+          <div className='item-description'>
+            <div className='item-date'>
+              <div>Aug 19</div>
               &ensp;-
             </div>
             <span className='item-content'>
@@ -363,7 +372,9 @@ const Home = () => {
             <span>
               Private sale: <em>May 20, 2022</em>
               <br />
-              Public sale: <em>June 20, 2022</em>
+              First Public sale: <em>June 20, 2022</em>
+              <br />
+              Second Public sale: <em>July 22, 2022</em>
             </span>
           </div>
         </div>
@@ -379,7 +390,7 @@ const Home = () => {
           </p>
           <div className='item-description-faq activeFaq'>
             <span>
-              Reveal of the collection: <em>July 25, 2022</em>
+              Reveal of the collection: <em>August 19, 2022</em>
               <br />
               You will be able to reveal your ArchiNFTs by exchanging minted
               NFTs for revealed ArchiNFTs from the date of revelation.
